@@ -545,10 +545,7 @@
             updateSyncIndicator(false, "Mất kết nối đám mây");
           });
         });
-      } else {
-        // Chế độ dự phòng Offline/Local nếu chưa có cấu hình Firebase
-        updateSyncIndicator(true, "Chế độ lưu trữ thiết bị");
-      }
+      
     } catch (e) {
       console.error("Lỗi khởi tạo Firebase:", e);
       updateSyncIndicator(false, "Chế độ lưu trữ dự phòng");

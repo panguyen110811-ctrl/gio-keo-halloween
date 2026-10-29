@@ -487,8 +487,15 @@
 
     // Khởi tạo Firebase nếu có cấu hình trong môi trường
     try {
-      if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-        const firebaseConfig = JSON.parse(__firebase_config);
+    if (true) {
+      const firebaseConfig = {
+        apiKey: "AIzaSyAjJmO-wPYW6CsJtTmfm33xqiMlUlx3REA",
+        authDomain: "gio-keo-2.firebaseapp.com",
+        projectId: "gio-keo-2",
+        storageBucket: "gio-keo-2.firebasestorage.app",
+        messagingSenderId: "152102178786",
+        appId: "1:152102178786:web:5c6d40c56c3d10d89e73bb",
+        measurementId: "G-PJ93RHPN48"
         const app = initializeApp(firebaseConfig);
         db = getFirestore(app);
         auth = getAuth(app);

@@ -587,9 +587,32 @@
       console.error("Lỗi khởi tạo Firebase:", e);
       updateSyncIndicator(false, "Chế độ lưu trữ dự phòng");
     }
+// Danh sách từ ngữ cần kiểm duyệt (có thể thêm bớt từ tùy ý)
+  const BAD_WORDS = [
+    "đm", "dm", "vcl", "vkl", "clmm", "đcm", "dcm", 
+    "chó", "súc vật", "con điên", "thằng điên", "ngu",
+    "dcmm", "đmm", "cc", "lồn", "buồi", "cặc", "địt"
+  ];
 
+  function censorText(text) {
+    if (!text) return "";
+    let clean = text;
+    BAD_WORDS.forEach(word => {
+      const reg = new RegExp(word, 'gi');
+      clean = clean.replace(reg, '***');
+    });
+    return clean;
+  }
     // Xuất hàm đẩy kẹo lên Cloud cho script chính gọi
     window.pushCandyToCloud = async (candyData) => {
+      // Kiểm tra từ cấm trong tên và lời nhắn
+    const isBadSender = BAD_WORDS.some(w => candyData.sender && candyData.sender.toLowerCase().includes(w));
+    const isBadMsg = BAD_WORDS.some(w => candyData.message && candyData.message.toLowerCase().includes(w));
+    
+    if (isBadSender || isBadMsg) {
+      alert("⚠️ Lời nhắn hoặc tên có chứa từ ngữ chưa phù hợp. Bạn hãy sửa lại lịch sự hơn nhé!");
+      return false; // Chặn lại, không đẩy kẹo lên giỏ chung
+    }
       if (isCloudReady && db && auth && auth.currentUser) {
         const candiesColRef = collection(db, 'artifacts', appId, 'public', 'data', 'candies');
         await addDoc(candiesColRef, {

@@ -133,7 +133,44 @@
   </style>
 </head>
 <body class="text-white relative flex flex-col justify-between p-3 sm:p-6 min-h-screen">
+<!-- BẢNG THÔNG BÁO VĂN MINH & HƯỚNG DẪN -->
+<div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+  <div class="relative w-full max-w-md rounded-2xl border-2 border-orange-500/60 bg-[#1a0f2e] p-6 text-white shadow-[0_0_35px_rgba(249,115,22,0.4)] text-center">
+    
+    <!-- Tiêu đề -->
+    <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500/20 text-3xl">
+      🎃
+    </div>
+    <h3 class="text-xl font-bold text-orange-400">Chào Mừng Đến Với Giỏ Kẹo!</h3>
+    <p class="mt-1 text-xs text-purple-200">Đọc chút lưu ý nhỏ trước khi cùng nhau trao kẹo nhé</p>
 
+    <!-- Nội dung hướng dẫn & quy định -->
+    <div class="mt-4 space-y-3 rounded-xl bg-purple-950/60 p-4 text-left text-sm border border-purple-800/50">
+      <div class="flex items-start gap-2.5">
+        <span class="text-base">🍬</span>
+        <div>
+          <strong class="text-orange-300">Cách gửi thư/kẹo:</strong>
+          <p class="text-xs text-gray-300 mt-0.5">Chọn một viên kẹo bạn thích ở bên dưới → Nhập tên & lời nhắn → Bấm nút gửi để kẹo bay thẳng vào giỏ chung.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-2.5">
+        <span class="text-base">✨</span>
+        <div>
+          <strong class="text-orange-300">Quy tắc văn minh:</strong>
+          <p class="text-xs text-gray-300 mt-0.5">Hãy để lại những lời chúc vui vẻ, ấm áp. Vui lòng không sử dụng từ ngữ thô tục, khiếm nhã hay gửi nội dung tiêu cực bạn nhé!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút xác nhận OK -->
+    <button 
+      onclick="document.getElementById('welcome-modal').classList.add('hidden')"
+      class="mt-5 w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]">
+      Đã hiểu, vào thả kẹo ngay! 🍬
+    </button>
+  </div>
+</div>
   <!-- ==================== HÌNH NỀN HALLOWEEN MA MỊ ==================== -->
   <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
     <!-- Mặt trăng rằm -->
